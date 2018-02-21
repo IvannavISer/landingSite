@@ -33,5 +33,5 @@
         @endforeach
         </tbody>
     </table>
-    <p><a class="btn btn-primary btn-lg" action="{{route('pagesAdd')}}" methods="get">ADD new record</a></p>
+    <p><a class="btn btn-primary btn-lg" href="{{route('pagesAdd')}}" methods="get">ADD new record</a></p>
 </div>
