@@ -16,7 +16,7 @@
             </div>
             <div class="form-group">
                 <label for="text">Полный текст</label>
-                <textarea class="form-control" value="{{old('text')}}" name="text"></textarea>
+                <textarea  id='text' class="form-control" value="{{old('text')}}" name="text"></textarea>
             </div>
             <div class="form-group">
                 <label class="btn btn-primary" for="images">
