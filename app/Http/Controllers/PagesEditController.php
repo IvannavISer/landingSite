@@ -23,6 +23,18 @@ class PagesEditController extends Controller
             if($validate->fails()){
                 return redirect()->route('pagesEdit',['page' => $data['id']])->withErrors($validate);
             }
+            if($request->hasFile('images')){
+                $file = $request->file('images');
+                $file->move(public_path('/assets/img'),$file->getClientOriginalName());
+                $data['images'] = $file->getClientOriginalName();
+            }
+            $string = $data['alias'];
+            $string = str_replace(" ","_",$string);
+            $data['alias'] = $string;
+            $page->fill($data);
+            if($page->update()){
+                return redirect('admin')->with('status','Страница обновлена');
+            }
          }
         else {
             $oldPage = $page->toArray();

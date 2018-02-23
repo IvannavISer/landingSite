@@ -31,9 +31,12 @@ class PagesAddController extends Controller
             else{
                 if($request->hasFile('images')){
                     $file = $request->file('images');//объект изображение
-                    $file->move('C:\OSPanel\domains\landing.loc\public\assets\img',$file->getClientOriginalName());
+                    $file->move(public_path('/assets/img'),$file->getClientOriginalName());
                     $data['images'] = $file->getClientOriginalName();//только имя помешаем в ячейку images
                     $page = new Page;
+                    $string = $data['alias'];
+                    $string = str_replace(" ","_",$string);
+                    $data['alias'] = $string;
                     $page->fill($data);
                     $page->save();
                     return redirect('admin')->with('status','Страница добавлена');
