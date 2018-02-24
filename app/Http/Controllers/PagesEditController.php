@@ -9,6 +9,12 @@ use App\Page;
 class PagesEditController extends Controller
 {
     public function execute(Page $page, Request $request){
+
+        if($request->isMethod('delete')){
+            $page->delete();
+            return redirect('admin')->with('status','Страница удалена');
+        }
+
         if($request->isMethod('post')){
             $messages = [
                 'required' => 'Поле :attribute обязательно к заполнению',
