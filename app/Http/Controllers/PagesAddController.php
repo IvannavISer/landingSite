@@ -35,6 +35,7 @@ class PagesAddController extends Controller
                     $data['images'] = $file->getClientOriginalName();//только имя помешаем в ячейку images
                     $page = new Page;
                     $string = $data['alias'];
+                    $string = trim($string);
                     $string = str_replace(" ","_",$string);
                     $data['alias'] = $string;
                     $page->fill($data);

@@ -29,6 +29,7 @@ class PagesEditController extends Controller
                 $data['images'] = $file->getClientOriginalName();
             }
             $string = $data['alias'];
+            $string = trim($string);
             $string = str_replace(" ","_",$string);
             $data['alias'] = $string;
             $page->fill($data);
